@@ -1,0 +1,45 @@
+﻿@using ADC_Enable_UI.Models;
+@{
+    ViewBag.Title = "Index";
+    var Status = ViewBag.Status;
+}
+
+<h2>Login Page</h2>
+
+
+<div class="container">
+    <form method="post" action="@Url.Action("Verify", "Home")">
+        <label>User</label>
+        <br />
+        <input type="text" name="username" />
+        <br /><br />
+        <label>Password</label>
+        <br />
+        <input type="password" name="password" />
+        <br /><br />
+        <input type="submit" name="submit" value="Login" class="btn btn-primary" />
+    </form>
+</div>
+<!-- 錯誤訊息的Modal -->
+<!-- 在頁面載入後顯示錯誤訊息的Modal -->
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("form").submit(function () {
+                var password = $("input[name='password']").val();
+                $("input[name='password']").val(btoa(password));
+            });
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <text>
+                    alert('@ViewBag.ErrorMessage');
+                </text>
+            }
+        });
+    </script>
+}
+
+
+
+

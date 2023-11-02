@@ -1,0 +1,92 @@
+﻿@using ADC_Enable_UI.Models;
+@model Cluster2
+@{ var user = Session["UserName"];}
+@{
+    ViewBag.Title = "Setting";
+
+}
+<h2>Setting</h2>
+<h3>Details of tool ADC stats</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ToolId</th>
+            <th>KlarfVersion</th>
+            <th>SubstrateType</th>
+            <th>adc_stats</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><input readonly type="text" name="ToolId" value="@Model.ToolId" /></td>
+            <td><input readonly type="text" name="KlarfVersion" value="@Model.KlarfVersion" /></td>
+            <td><input readonly type="text" name="SubstrateType" value="@Model.SubstrateType" /></td>
+            <td><input readonly type="text" name="adc_stats" value="@Model.adc_stats.ToString()" /></td>
+            <td>
+                <form method="get" action="~/home/Disable_adc_Set">
+                    <input type="hidden" name="ToolId" value="@Model.ToolId" />
+                    <input type="hidden" name="KlarfVersion" value="@Model.KlarfVersion" />
+                    <input type="hidden" name="SubstrateType" value="@Model.SubstrateType" />
+                    <input type="hidden" name="adc_stats" value="@Model.adc_stats.ToString()" />
+                    <input type="submit" name="submit" value="Change_ADC" class="btn btn-primary" />
+                </form>
+            </td>
+            @*<td><button class="btn-change-adc">Disable</button></td>*@
+        </tr>
+    </tbody>
+
+    @*<form method="get" action="~/home/Disable_adc_Set">
+            <input type="hidden" name="ToolId" value="@Model.ToolId" />
+            <input type="hidden" name="KlarfVersion" value="@Model.KlarfVersion" />
+            <input type="hidden" name="SubstrateType" value="@Model.SubstrateType" />
+            <input type="hidden" name="adc_stats" value="@Model.adc_stats.ToString()" />
+            <input type="submit" name="submit" value="Change_ADC" class="btn btn-primary" />
+        </form>*@
+
+
+    @*@section Scripts {
+            <script>
+            $(function () {
+                $('.btn-save-combination').click(function () {
+                    $.ajax({
+                        url: '@Url.Action("Save_Assocaition_Set", "Home")',
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        success: function (result) {
+                            if (result.success) {
+                                alert('Saved successfully!');
+                            } else {
+                                alert('Failed to save.');
+                            }
+                        }
+                    });
+                });
+
+                $('.btn-change-adc').click(function () {
+                     var tr = $(this).closest('tr');
+                     var data = {
+                         ToolId: tr.find('input[name="ToolId"]').val(),
+                         KlarfVersion: tr.find('input[name="KlarfVersion"]').val(),
+                         SubstrateType: tr.find('input[name="SubstrateType"]').val(),
+                         adc_stats: tr.find('input[name="adc_stats"]').val(),
+                    };
+                    $.ajax({
+                        url: '@Url.Action("Disable_adc_Set", "Home")',
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        success: function (result) {
+                            if (result.success) {
+                                alert('Saved successfully!');
+                            } else {
+                                alert('Failed to save.');
+                            }
+                        }
+                    });
+                });
+            });
+            </script>
+        }*@

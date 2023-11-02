@@ -1,0 +1,35 @@
+﻿@using ADC_Enable_UI.Models;
+
+@{ var user = Session["UserName"];}
+@{
+    ViewBag.Title = "ADC change";
+    var ToolId = ViewData["ToolId"];
+    var KlarfVersion = ViewData["KlarfVersion"];
+    var SubstrateType = ViewData["SubstrateType"];
+    var adc_stats = ViewData["adc_stats"];
+
+
+}
+<h2>Setting</h2>
+<h3>Details of Tool change</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+
+            <th>ToolId</th>
+            <th>KlarfVersion</th>
+            <th>SubstrateType</th>
+            <th>adc_stats</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td><input readonly type="text" name="ToolId" value=@ToolId /></td>
+            <td><input readonly type="text" name="KlarfVersion" value=@KlarfVersion /></td>
+            <td><input readonly type="text" name="SubstrateType" value=@SubstrateType /></td>
+            <td><input readonly type="text" name="adc_stats" value=@adc_stats /></td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Setting";
+}
+
+<h2>Setting</h2>
+
+@*<div class="container">
+        <form method="post" action="~/home/Setting">
+
+            <br /><br />
+            <label>Cluster ID</label>
+            <br />
+            <input type="text" name="value" />
+            <br /><br />
+            <input type="submit" name="submit" value="Search" class="btn btn-primary" />
+        </form>
+    </div>*@
+<div class="container">
+    <form method="get" action="~/home/Setting">
+
+        <br /><br />
+        <label>Tool_id</label>
+        <br />
+        <input type="text" name="cluster_id" />
+        <h5>e.g.,ATWIND-0010</h5>
+        <br /><br />
+        <input type="submit" name="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <text>
+                    alert('@ViewBag.ErrorMessage');
+                </text>
+            }
+        });
+    </script>
+}

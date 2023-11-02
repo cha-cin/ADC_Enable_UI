@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Expired";
+}
+
+<h2>Username Expired Please Login again.</h2>
+
+
+<div class="container">
+    <form method="post" action="@Url.Action("Index", "Home")">
+        <input type="submit" name="submit" value="Login" class="btn btn-primary" />
+    </form>
+</div>
+
